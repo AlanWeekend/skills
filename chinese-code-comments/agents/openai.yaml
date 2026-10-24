@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文逻辑与流程注释"
+  short_description: "为业务分支、异步流程和关键语句编写详细中文说明，便于阅读审查代码"
+  default_prompt: "使用 $chinese-code-comments 为涉及文件补充准确、详细且便于审查的中文流程注释。"

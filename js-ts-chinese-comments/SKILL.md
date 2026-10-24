@@ -1,9 +1,11 @@
 ---
 name: js-ts-chinese-comments
-description: Use when writing or modifying JavaScript, TypeScript, JSX, TSX, or Vue SFC code that requires Chinese comments (中文注释) for scripts and meaningful template sections, branches, and interaction boundaries.
+description: 为 JavaScript、TypeScript、JSX、TSX 和 Vue 脚本编写中文 JSDoc，覆盖函数、类、接口、成员、泛型及关键逻辑。用于新写或修改源码、补齐注释；兼容原有 Vue 使用方式，不要求安装其他 Skill。
 ---
 
-# JS/TS/Vue 中文注释
+# JS / TS 中文接口与代码注释
+
+保留原 Skill 名称及 Vue 基础兼容规则。重点负责 JS / TS 的接口语义与代码阅读说明，不绑定前端框架、Node.js 服务框架或某个项目。详细 JSDoc 示例见 [references/examples.md](references/examples.md)。
 
 ## 核心要求
 
@@ -24,7 +26,7 @@ description: Use when writing or modifying JavaScript, TypeScript, JSX, TSX, or 
 ## 注释位置
 
 - 普通 JS/TS 文件把文件说明放在 shebang、许可证或必须置顶的指令之后。
-- Vue 单文件组件把文件说明放在 `<script>` 或 `<script setup>` 块开头，不改变 SFC 区块顺序。
+- Vue 单文件组件默认在文件顶部使用 HTML 用途注释；已有统一 script 文件头时维护它，不重复，也不改变 SFC 区块顺序。
 - 函数和类型使用紧邻声明的 `/** ... */` 注释。
 - 逻辑块使用紧邻控制语句或分支的 `// ...` 注释。
 - Vue 模板使用 `<!-- ... -->`，放在对应完整区块或条件链之前，不插入文本节点内容中。
@@ -35,6 +37,11 @@ description: Use when writing or modifying JavaScript, TypeScript, JSX, TSX, or 
 - 注释使用中文；标识符、协议名和必要技术术语可以保留英文。
 - 注释说明职责、意图和约束，不逐行翻译导入、赋值、调用或直接返回。
 - 模板注释说明业务区域和状态含义，不复述标签名、组件名、样式、布局方向或可直接读出的显示文案。
+- JSDoc 的 `@param`、`@returns`、`@throws`、`@template` 等标签保持英文，标签后的含义、约束、单位和失败条件使用中文；TS 已有类型时不机械重复类型。
+- 函数需说明实际返回的值、异步完成含义及重要副作用；只记录可确认的异常，不把所有下游异常无依据地列出。
+- 接口成员和业务状态说明各字段含义、可选时的行为、空值语义及枚举或联合类型的差异；复杂泛型说明类型参数和约束。
+- 箭头函数和匿名回调在合法位置说明目的；可由紧邻的整体调用说明覆盖短回调，不在 JSX 标签属性内部插入非法 JSDoc。
+- 保留 shebang、许可证、三斜线引用及 `@ts-expect-error`、ESLint、打包工具的原有指令和绑定目标；不要让新增说明隔开指令与目标语句。
 - 避免在第三方组件插槽、`Transition/TransitionGroup`、SSR hydration 边界或依赖直接子节点结构的位置随意插入注释；应将注释放到不会改变插槽内容和渲染结构的外层语义边界。
 - 修改代码时同步修正失效注释，并补齐当前文件缺失的脚本层级和必要模板语义注释。
 - 只补充注释和完成用户要求的代码，不借机修改无关业务逻辑。
@@ -45,7 +52,7 @@ description: Use when writing or modifying JavaScript, TypeScript, JSX, TSX, or 
 1. 识别任务涉及的 JS、TS 和 Vue SFC，排除明确的生成或第三方代码。
 2. 理解文件职责、代码流、模板区域和 UI 状态后再修改代码。
 3. 按文件、函数、类型和逻辑块补齐脚本注释，并按业务区块和复杂分支补齐模板注释。
-4. 运行项目现有的格式化、类型检查、测试或构建命令。
+4. 根据受影响内容运行项目现有的格式、类型、解析或针对性测试，不擅自安装文档站点工具或重写 lint 配置。
 5. 按检查表复核后再报告完成。
 
 ## 交付检查

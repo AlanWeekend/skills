@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文文件用途说明"
+  short_description: "为自有源码添加准确中文文件头，说明职责、入口、关键依赖和使用边界"
+  default_prompt: "使用 $file-purpose-comments 为涉及源码补齐中文文件用途说明，并保留各语言的合法位置。"

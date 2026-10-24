@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文注释准确性审查"
+  short_description: "检查文件用途、接口与流程注释的完整性和准确性，定位误导或缺失说明"
+  default_prompt: "使用 $chinese-comment-review 审查指定文件的中文注释，按实际影响报告有依据的问题与行号。"
