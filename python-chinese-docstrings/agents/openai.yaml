@@ -1,4 +1,4 @@
 interface:
   display_name: "Python 中文文档字符串"
-  short_description: "为 Python 模块、类、方法与函数编写中文文档字符串，解释接口和关键流程"
-  default_prompt: "使用 $python-chinese-docstrings 为涉及的 Python 代码补齐中文模块、类和函数说明，并解释关键内部流程。"
+  short_description: "为 Python 模块、类、方法与函数编写合法中文文档字符串，解释接口与调用约定"
+  default_prompt: "使用 $python-chinese-docstrings 为涉及的 Python 模块、类、函数和方法维护合法且准确的中文 Docstring。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "数据库命名与审计字段"
+  short_description: "统一单数业务域表名与下划线字段名，并落实创建更新的时间和操作者审计字段"
+  default_prompt: "使用 $database-naming-conventions 检查本次表与字段命名，确保单数业务域前缀、snake_case 和四个审计字段符合约定。"

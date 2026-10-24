@@ -1,0 +1,4 @@
+interface:
+  display_name: "数据库表字段中文注释"
+  short_description: "为表和字段补齐准确的中文业务说明，并核对模型、迁移与数据库元数据的一致性"
+  default_prompt: "使用 $database-chinese-comments 为本次涉及的表和字段补齐中文业务注释，并核对 ORM、迁移与实际落库结果。"

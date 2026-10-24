@@ -1,21 +1,13 @@
-# Vue 页面与组件示例
+# Vue 专项注释示例
 
-以下组件只负责展示和收集输入，不直接调用 API。父组件负责处理 send 事件和 loading 状态。
+以下示例展示组件契约、响应式状态与模板语义；父组件负责处理 send 事件和 loading 状态。
 
 ```vue
-<!--
-用途：会话消息面板，展示消息列表并收集用户输入。
-职责：发送非空白消息、显示提交状态；实际请求由父组件处理。
-输入与事件：接收 messages 和 loading，通过 send 事件上报待发送文本。
--->
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
-/** 消息的展示数据，不包含服务端权限或持久化行为。 */
 interface MessageView {
-  /** 稳定的消息编号，用于列表节点复用。 */
   id: string;
-  /** 以普通文本展示的消息内容。 */
   content: string;
 }
 
@@ -38,16 +30,12 @@ const draft = ref('');
 /** 根据输入内容和父级提交状态计算是否可发送，不发起请求。 */
 const canSend = computed(() => draft.value.trim().length > 0 && !props.loading);
 
-/** 校验当前输入，向父组件发送消息后清空草稿；请求失败反馈由父组件负责。 */
 function sendMessage(): void {
-  // 与按钮禁用状态保持同一规则，也防止其他入口调用时绕过校验。
   if (!canSend.value) {
     return;
   }
 
-  // 只上报规范化文本，不在此组件中直接新增消息或调用接口。
   emit('send', draft.value.trim());
-  // 清空仅代表输入已上报，不表示服务端已经保存或 Agent 已执行成功。
   draft.value = '';
 }
 </script>

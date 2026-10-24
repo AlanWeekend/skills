@@ -1,4 +1,4 @@
 interface:
   display_name: "JS TS 中文接口注释"
-  short_description: "为函数、类型、成员及关键逻辑补齐中文说明，兼容 Vue 脚本和模板基础规则"
-  default_prompt: "使用 $js-ts-chinese-comments 为涉及的 JS 或 TS 代码补齐便于审查的中文 JSDoc 与关键逻辑说明。"
+  short_description: "为 JS 与 TS 的普通函数、类型和成员编写中文接口契约，明确参数结果与约束"
+  default_prompt: "使用 $js-ts-chinese-comments 为涉及的 JS 或 TS 函数、类型及成员补齐中文 JSDoc 接口契约。"

@@ -2,7 +2,7 @@
 
 ## 模块、类与方法
 
-以下示例只依赖标准库，可用于检查文档结构和实际行为是否一致。
+以下标准库示例展示模块、类与方法的 Docstring，可用于核对文档与实际行为。
 
 ```python
 """文本标签读取模块，为命令行和导入入口提供统一的逐行读取规则。"""
@@ -35,13 +35,10 @@ class LabelReader:
             OSError: 文件不存在、不可读或发生其他文件系统错误。
             UnicodeError: 文件内容不能按 UTF-8 解码。
         """
-        # read_text 负责打开和关闭文件；解码与文件系统异常交给调用方处理。
         lines = self.source.read_text(encoding="utf-8").splitlines()
         labels: list[str] = []
-        # 按源文件顺序处理，保留重复标签供上层决定是否去重。
         for line in lines:
             label = self._normalize(line)
-            # 空白行不是有效标签，不加入返回列表。
             if label:
                 labels.append(label)
         return labels
@@ -67,7 +64,6 @@ def numbered_labels(labels: list[str]) -> Iterator[tuple[int, str]]:
     Yields:
         展示序号和对应标签组成的二元组；输入为空时不产生任何结果。
     """
-    # enumerate 延迟生成序号与标签，避免预先构造额外的结果列表。
     yield from enumerate(labels, start=1)
 ```
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "业务对象身份设计"
+  short_description: "区分记录主键与稳定业务对象身份，明确版本发布、复制和迁移中的标识规则"
+  default_prompt: "使用 $business-object-identity 审查涉及的模型和接口，明确记录键、业务对象 ID、唯一范围及版本和迁移规则。"
