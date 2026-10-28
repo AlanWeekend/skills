@@ -59,16 +59,80 @@ npx skills add D:/Code/skills --skill business-object-identity database-naming-c
 
 ## 如何组合
 
-| 项目或任务 | 建议选择 |
-| --- | --- |
-| Vue + TypeScript 前端 | `file-purpose-comments` + `js-ts-chinese-comments` + `vue-chinese-comments` + `chinese-code-comments` |
-| Python 后端或脚本 | `python-chinese-docstrings` + `chinese-code-comments`；需要统一文件职责字段时再加 `file-purpose-comments` |
-| 其他语言，只需要中文流程说明 | `file-purpose-comments` + `chinese-code-comments` |
-| 只检查现有注释 | `chinese-comment-review` |
-| 中文规范提交，不需要注释规则 | `git-chinese-commits` |
-| 业务对象身份、版本关系和导入迁移设计 | `business-object-identity`，按项目需要结合已有数据库设计 Skill |
-| 单数业务域表名、字段命名与基础审计 | `database-naming-conventions` |
-| 数据库表和字段中文注释 | `database-chinese-comments`；同时变更对象身份时再加 `business-object-identity` |
+点击对应的“安装命令”，在目标项目目录运行其中一条单行命令，即可一次安装该组合。命令默认安装给 Codex，使用复制方式并跳过确认；跨项目使用时，在命令末尾加 `--global`。
+
+| 项目或任务 | 建议选择 | 一键安装 |
+| --- | --- | --- |
+| Vue + TypeScript 前端 | `file-purpose-comments` + `js-ts-chinese-comments` + `vue-chinese-comments` + `chinese-code-comments` | [安装命令](#vue-前端组合) |
+| Python 后端或脚本 | `python-chinese-docstrings` + `chinese-code-comments`；需要统一文件职责字段时再加 `file-purpose-comments` | [安装命令](#python-组合) |
+| 其他语言，只需要中文流程说明 | `file-purpose-comments` + `chinese-code-comments` | [安装命令](#其他语言组合) |
+| 只检查现有注释 | `chinese-comment-review` | [安装命令](#注释审查) |
+| 中文规范提交，不需要注释规则 | `git-chinese-commits` | [安装命令](#中文规范提交) |
+| 业务对象身份、版本关系和导入迁移设计 | `business-object-identity`，按项目需要结合已有数据库设计 Skill | [安装命令](#业务对象身份设计) |
+| 单数业务域表名、字段命名与基础审计 | `database-naming-conventions` | [安装命令](#数据库命名与基础审计) |
+| 数据库表和字段中文注释 | `database-chinese-comments`；同时变更对象身份时再加 `business-object-identity` | [安装命令](#数据库中文注释) |
+
+### Vue 前端组合
+
+```bash
+npx skills add AlanWeekend/skills --skill file-purpose-comments js-ts-chinese-comments vue-chinese-comments chinese-code-comments --agent codex --copy -y
+```
+
+### Python 组合
+
+```bash
+npx skills add AlanWeekend/skills --skill python-chinese-docstrings chinese-code-comments --agent codex --copy -y
+```
+
+需要统一文件职责字段时，使用包含 `file-purpose-comments` 的组合：
+
+```bash
+npx skills add AlanWeekend/skills --skill python-chinese-docstrings chinese-code-comments file-purpose-comments --agent codex --copy -y
+```
+
+### 其他语言组合
+
+```bash
+npx skills add AlanWeekend/skills --skill file-purpose-comments chinese-code-comments --agent codex --copy -y
+```
+
+### 注释审查
+
+```bash
+npx skills add AlanWeekend/skills --skill chinese-comment-review --agent codex --copy -y
+```
+
+### 中文规范提交
+
+```bash
+npx skills add AlanWeekend/skills --skill git-chinese-commits --agent codex --copy -y
+```
+
+### 业务对象身份设计
+
+```bash
+npx skills add AlanWeekend/skills --skill business-object-identity --agent codex --copy -y
+```
+
+### 数据库命名与基础审计
+
+```bash
+npx skills add AlanWeekend/skills --skill database-naming-conventions --agent codex --copy -y
+```
+
+### 数据库中文注释
+
+```bash
+npx skills add AlanWeekend/skills --skill database-chinese-comments --agent codex --copy -y
+```
+
+同时变更对象身份时，使用包含 `business-object-identity` 的组合：
+
+```bash
+npx skills add AlanWeekend/skills --skill database-chinese-comments business-object-identity --agent codex --copy -y
+```
+
+### 组合使用说明
 
 安装是提供可发现的指导，不是自动执行的 lint 保证。需要长期强制执行时，可把以下约定写入使用方仓库的 `AGENTS.md`，并结合项目已有检查：
 
